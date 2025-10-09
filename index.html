@@ -7,14 +7,67 @@
   <title>EXPO971.AE — Coming Soon</title>
   <style>
     :root{ --gold1:#c8a96b; --gold2:#f3e3b0; --gold3:#b48a45; }
-    html,body{height:100%;margin:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:#0b0d10}
-    .bg{position:fixed;inset:0;background:url("assets/uae-hero.jpg") center/cover no-repeat;
-        filter:saturate(1.05) contrast(1.06) brightness(.96)}
-    .bg::after{content:"";position:absolute;inset:0;
-        background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.55))}
-    main{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;
-        justify-content:center;text-align:center;color:#eee;padding:24px}
-    .domain{letter-spacing:.35em;text-indent:.35em;margin-bottom:18px;font-weight:700;font-size:18px;
-        color:#f3e3b0;background:rgba(0,0,0,.35);padding:8px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.15)}
-    h1{font-size:clamp(40px,8vw,96px);margin:0 0 12px;line-height:1.
+    html,body{height:100%;margin:0;background:#0b0d10}
+    body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+
+    /* Background image layer */
+    .bg{
+      position:fixed; inset:0; z-index:0;
+      background:url("assets/uae-hero.jpg") center/cover no-repeat;
+      filter:saturate(1.05) contrast(1.06) brightness(.96);
+    }
+    .bg::after{
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(to bottom, rgba(0,0,0,.25), rgba(0,0,0,.55));
+    }
+
+    /* Content layer */
+    main{
+      position:fixed; inset:0; z-index:1;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; color:#eee; padding:24px;
+    }
+    .domain{
+      letter-spacing:.35em; text-indent:.35em; margin-bottom:18px;
+      font-weight:700; font-size:18px; color:#f3e3b0;
+      background:rgba(0,0,0,.35); padding:8px 16px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.15);
+    }
+
+    /* Fallback color for browsers without gradient text */
+    h1{
+      font-size:clamp(40px,8vw,96px); margin:0 0 12px 0; line-height:1.05; font-weight:800;
+      color:#f3e3b0;                  /* Fallback so text is visible */
+      text-shadow:0 6px 22px rgba(0,0,0,.45);
+    }
+    /* When gradient-clip is supported, use gold shimmer */
+    @supports ((background-clip: text) or (-webkit-background-clip: text)) {
+      h1{
+        background:linear-gradient(110deg,var(--gold3),var(--gold2),var(--gold1),var(--gold2),var(--gold3));
+        background-size:200% 100%;
+        -webkit-background-clip:text; background-clip:text;
+        -webkit-text-fill-color:transparent; color:transparent;
+        animation:shine 3.8s linear infinite;
+      }
+      @keyframes shine{to{background-position:-200% 0}}
+    }
+
+    .ar{
+      font-size:clamp(20px,3.5vw,36px); color:#f2ead2; margin-top:6px; letter-spacing:.03em;
+      direction:rtl; text-shadow:0 3px 14px rgba(0,0,0,.45);
+    }
+    footer{
+      position:fixed; bottom:18px; width:100%; text-align:center; color:#c9c9c9; font-size:12px; opacity:.7; z-index:1;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <main>
+    <div class="domain">EXPO971.AE</div>
+    <h1>COMING&nbsp;SOON</h1>
+    <div class="ar">قريبًا</div>
+  </main>
+  <footer>© EXPO971.AE</footer>
+</body>
+</html>
