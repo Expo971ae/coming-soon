@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
       <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -19,25 +21,21 @@
 
 <header class="nav">
   <div class="container nav-inner">
-    <!-- Logo -->
     <a href="index.html" aria-label="Expo971 Home" class="brand-logo">
       <img src="assets/971_logo.png" alt="Expo971 Logo" class="site-logo">
     </a>
 
-  
-
-    <!-- Navigation -->
     <nav class="menu">
       <a href="index.html"  data-i18n-en="Home" data-i18n-ar="الرئيسية">Home</a>
       <a href="who-we-are.html" data-i18n-en="Who We Are" data-i18n-ar="من نحن">Who We Are</a>
-      <a href="our-purpose.html" data-i18n-en="Our Purpose" data-i18n-ar="هدفنا">Our Purpose</a>
+      <a href="our-purpose.html"  data-i18n-en="Our Purpose" data-i18n-ar="هدفنا">Our Purpose</a>
       <a href="heritage.html" data-i18n-en="Heritage & Crafts" data-i18n-ar="التراث والحرف">Heritage & Crafts</a>
       <a href="program.html" data-i18n-en="Program" data-i18n-ar="البرنامج">Program</a>
       <a href="sponsors.html" data-i18n-en="Sponsors" data-i18n-ar="الرعاة">Sponsors</a>
-      <a href="contact.html" data-i18n-en="Contact" data-i18n-ar="تواصل" class="active" >Contact</a>
+      <a href="gallery.html" data-i18n-en="Gallery" data-i18n-ar="المعرض">Gallery</a>
+      <a href="contact.html" data-i18n-en="Contact" data-i18n-ar="تواصل">Contact</a>
     </nav>
 
-    <!-- Language Switch -->
     <div class="lang-switch">
       <button class="btn" id="lang-en">EN</button>
       <button class="btn" id="lang-ar">AR</button>
@@ -47,35 +45,27 @@
 
 
   <main>
-    <section class="hero ornament-corner">
-  <div class="hero-logo">
-    <img src="assets/971_logo.png" alt="Expo971 Logo">
-  </div>
-      <div class="container hero-grid">
-        <div>
-           <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
-          <h1 data-i18n-en="Expo971 – Heritage & Handicrafts Event" data-i18n-ar="إكسبو 971 – فعالية التراث والحرف اليدوية">Expo971 – Heritage & Handicrafts Event</h1>
-          <p class="lead" data-i18n-en="Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre"
-             data-i18n-ar="تحت رعاية مركز رواق عوشة بنت حسين الثقافي والاجتماعي.">
-            Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre
-          </p>
-          <div class="badges">
-            <span class="badge" data-i18n-en="Heritage" data-i18n-ar="التراث">Heritage</span>
-            <span class="badge" data-i18n-en="Crafts" data-i18n-ar="الحرف">Crafts</span>
-            <span class="badge" data-i18n-en="Culture" data-i18n-ar="الثقافة">Culture</span>
-          </div>
-          <div class="btn-row" style="margin-top:18px">
-            <a class="btn-grad" href="contact.html" data-i18n-en="Get Involved" data-i18n-ar="شارك معنا">Get Involved</a>
-            <a class="btn-grad" href="sponsors.html" data-i18n-en="Become a Sponsor" data-i18n-ar="كن راعيًا">Become a Sponsor</a>
-            <a class="btn-grad" href="registration.html" data-i18n-en="Register as Participant" data-i18n-ar="تسجيل المشاركين">Register as Participant</a>
-          </div>
+      <section class="hero ornament-corner">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
+        <h1 data-i18n-en="Expo971 – Heritage & Handicraft Events" data-i18n-ar="إكسبو 971 – فعالية التراث والحرف اليدوية">Expo971 – Heritage & Handicraft Events</h1>
+        <p class="sub-lead" data-i18n-en="Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre" data-i18n-ar="تحت رعاية مركز رواق عوشة بنت حسين الثقافي والاجتماعي.">
+          Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre
+        </p>
+        <div class="badges">
+          <span class="badge" data-i18n-en="Heritage" data-i18n-ar="التراث">Heritage</span>
+          <span class="badge" data-i18n-en="Crafts" data-i18n-ar="الحرف">Crafts</span>
+          <span class="badge" data-i18n-en="Culture" data-i18n-ar="الثقافة">Culture</span>
         </div>
-        <div class="card ornament-corner">
-  <img src="assets/971_logo.png" class="responsive" alt="Expo971">
-</div>
-
+        <div class="btn-row" style="margin-top:18px">
+          <a class="btn-grad" href="contact.html" data-i18n-en="Get Involved" data-i18n-ar="شارك معنا">Get Involved</a>
+          <a class="btn-grad" href="sponsors.html" data-i18n-en="Become a Sponsor" data-i18n-ar="كن راعيًا">Become a Sponsor</a>
+        </div>
       </div>
-    </section>
+      <div class="card ornament-corner"><img src="assets/971_logo.png" class="responsive" alt="Expo971"></div>
+    </div>
+  </section>
 
 <section class="section ornament-corner">
   <div class="container">
@@ -115,17 +105,30 @@
 
 
   </main>
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <img src="assets/971_logo.png" alt="Expo971 Logo" class="footer-logo">
-      <div class="brand">
-        <span>Expo971</span>
-      </div>
-    </div>
-    <div class="small">© <span id="year"></span> Expo971 – All rights reserved.</div>
-  </div>
-</footer>
+<div id="footer-placeholder"></div>
+
+<script>
+  // Load footer from shared file
+  fetch('./partials/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+      document.getElementById('year').textContent = new Date().getFullYear();
+      applyFooterLanguageLinks(); // keep language consistent
+    });
+
+  // Function to preserve current language
+  function applyFooterLanguageLinks() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || 'en';
+    document.querySelectorAll('.footer-menu a').forEach(a => {
+      const url = new URL(a.getAttribute('href'), window.location.href);
+      url.searchParams.set('lang', lang);
+      a.href = url.pathname + '?' + url.searchParams.toString();
+    });
+  }
+</script>
+
   <script>
     (function(){
       const params = new URLSearchParams(window.location.search);

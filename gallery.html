@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expo971 • Gallery</title>
+  <meta name="description" content="Explore the visual journey of Expo971 – Heritage, Crafts, and Culture.">
+
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <meta name="theme-color" content="#D4AF37">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" aria-label="Expo971 Home" class="brand-logo">
+      <img src="assets/971_logo.png" alt="Expo971 Logo" class="site-logo">
+    </a>
+
+    <nav class="menu">
+      <a href="index.html" data-i18n-en="Home" data-i18n-ar="الرئيسية">Home</a>
+      <a href="who-we-are.html" data-i18n-en="Who We Are" data-i18n-ar="من نحن">Who We Are</a>
+      <a href="our-purpose.html" data-i18n-en="Our Purpose" data-i18n-ar="هدفنا">Our Purpose</a>
+      <a href="heritage.html" data-i18n-en="Heritage & Crafts" data-i18n-ar="التراث والحرف">Heritage & Crafts</a>
+      <a href="program.html" data-i18n-en="Program" data-i18n-ar="البرنامج">Program</a>
+      <a href="sponsors.html" data-i18n-en="Sponsors" data-i18n-ar="الرعاة">Sponsors</a>
+      <a href="gallery.html" class="active" data-i18n-en="Gallery" data-i18n-ar="المعرض">Gallery</a>
+      <a href="contact.html" data-i18n-en="Contact" data-i18n-ar="تواصل">Contact</a>
+    </nav>
+
+    <div class="lang-switch">
+      <button class="btn" id="lang-en">EN</button>
+      <button class="btn" id="lang-ar">AR</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero ornament-corner">
+    <div class="container hero-grid">
+      <div>
+        <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
+        <h1 data-i18n-en="Expo971 – Gallery" data-i18n-ar="إكسبو 971 – المعرض">Expo971 – Gallery</h1>
+        <p class="sub-lead" data-i18n-en="A glimpse into the beauty of Emirati heritage and craftsmanship."
+           data-i18n-ar="لمحة عن جمال التراث الإماراتي والحرف اليدوية.">
+           A glimpse into the beauty of Emirati heritage and craftsmanship.
+        </p>
+      </div>
+      <div class="card ornament-corner">
+        <img src="assets/Page6.png" class="responsive" alt="Expo971 Gallery">
+      </div>
+    </div>
+  </section>
+
+  <section class="section ornament-corner">
+    <div class="container" style="text-align:center; padding:100px 0;">
+      <h2 class="gold-grad" data-i18n-en="Coming Soon" data-i18n-ar="قريبًا">Coming Soon</h2>
+      <p data-i18n-en="Our visual archive is being curated to showcase the spirit of Expo971. Stay tuned!"
+         data-i18n-ar="نقوم حاليًا بإعداد معرض بصري يعكس روح إكسبو 971. ترقبوا!">
+         Our visual archive is being curated to showcase the spirit of Expo971. Stay tuned!
+      </p>
+    </div>
+  </section>
+</main>
+
+<!-- Shared footer placeholder -->
+<div id="footer-placeholder"></div>
+
+<script>
+  // Load footer from shared partial
+  fetch('./partials/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+      document.getElementById('year').textContent = new Date().getFullYear();
+      applyFooterLanguageLinks(); // ensure language consistency
+    })
+    .catch(err => console.error('Footer load failed:', err));
+
+  // Maintain selected language across pages
+  function applyFooterLanguageLinks() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || 'en';
+    document.querySelectorAll('.footer-menu a').forEach(a => {
+      const url = new URL(a.getAttribute('href'), window.location.href);
+      url.searchParams.set('lang', lang);
+      a.href = url.pathname + '?' + url.searchParams.toString();
+    });
+  }
+
+  // Language switch logic
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    let lang = params.get('lang') || 'en';
+    function swapLang(l){
+      document.documentElement.lang = l==='ar'?'ar':'en';
+      document.documentElement.dir = l==='ar'?'rtl':'ltr';
+      document.querySelectorAll('[data-i18n-en]').forEach(el=>{
+        const t = el.getAttribute(l==='ar'?'data-i18n-ar':'data-i18n-en');
+        if(t) el.textContent = t;
+      });
+    }
+    swapLang(lang);
+    document.getElementById('lang-en').addEventListener('click', ()=>{ params.set('lang','en'); location.search = params.toString(); });
+    document.getElementById('lang-ar').addEventListener('click', ()=>{ params.set('lang','ar'); location.search = params.toString(); });
+  })();
+</script>
+</body>
+</html>
