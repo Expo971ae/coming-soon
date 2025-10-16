@@ -46,18 +46,44 @@
 </header>
 
 <main>
-  <section class="hero ornament-corner">
-    <div class="container hero-grid">
-      <div>
-        <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
-        <h1 data-i18n-en="Join Expo971 – Be Part of the Heritage Experience" data-i18n-ar="انضم إلى إكسبو971 – كن جزءًا من تجربة التراث">Join Expo971 – Be Part of the Heritage Experience</h1>
-        <p class="sub-lead" data-i18n-en="A platform for artisans, creators, and heritage enthusiasts" data-i18n-ar="منصة للحرفيين والمبدعين ومحبي التراث">
-          A platform for artisans, creators, and heritage enthusiasts
-        </p>
-      </div>
-      <div class="card ornament-corner"><img src="assets/971_logo.png" class="responsive" alt="Expo971 Participants"></div>
+<section class="hero ornament-corner">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
+      <h1 data-i18n-en="Join Expo971 – Be Part of the Heritage Experience" data-i18n-ar="انضم إلى إكسبو971 – كن جزءًا من تجربة التراث">
+        Join Expo971 – Be Part of the Heritage Experience
+      </h1>
+      <p class="sub-lead" data-i18n-en="A platform for artisans, creators, and heritage enthusiasts" data-i18n-ar="منصة للحرفيين والمبدعين ومحبي التراث">
+        A platform for artisans, creators, and heritage enthusiasts
+      </p>
+
+      <!-- Download Form (EN + AR) -->
+      <p data-i18n-en-html style="display:block">
+        <a href="https://docs.google.com/document/d/1dVLaTNhGW3yxWm2fJMy9f9e0biz_fnXJ/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true"
+           class="btn-accent"
+           target="_blank"
+           rel="noopener">
+          Download Participant Form
+        </a>
+      </p>
+
+      <p data-i18n-ar-html style="display:none">
+        <a href="https://docs.google.com/document/d/1wkMJvX3O7YkvQji-HhOkSBmcNHbwSoV6/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true"
+           class="btn-accent"
+           target="_blank"
+           rel="noopener">
+          تحميل نموذج المشاركة
+        </a>
+      </p>
+      <!-- End Download Form -->
     </div>
-  </section>
+
+    <div class="card ornament-corner">
+      <img src="assets/971_logo.png" class="responsive" alt="Expo971 Participants">
+    </div>
+  </div>
+</section>
+
 
   <section class="section ornament-corner">
     <div class="container">
@@ -139,9 +165,16 @@
       document.getElementById('footer-placeholder').innerHTML = data;
       document.getElementById('year').textContent = new Date().getFullYear();
       applyFooterLanguageLinks(); // keep language consistent
+
+      // >>> Reapply current language to the newly loaded footer <<<
+      const params = new URLSearchParams(window.location.search);
+      const currentLang = params.get('lang') || 'en';
+      if (typeof swapLang === 'function') {
+        swapLang(currentLang);
+      }
     });
 
-  // Function to preserve current language
+  // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get('lang') || 'en';
@@ -152,6 +185,7 @@
     });
   }
 </script>
+
 
 
 <script>

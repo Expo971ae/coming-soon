@@ -102,18 +102,35 @@
   (function() {
     const params = new URLSearchParams(window.location.search);
     let lang = params.get('lang') || 'en';
+
     function swapLang(l){
       document.documentElement.lang = l==='ar'?'ar':'en';
       document.documentElement.dir = l==='ar'?'rtl':'ltr';
+
+      // Swap text
       document.querySelectorAll('[data-i18n-en]').forEach(el=>{
         const t = el.getAttribute(l==='ar'?'data-i18n-ar':'data-i18n-en');
         if(t) el.textContent = t;
       });
+
+      // Update menu links with current language
+      document.querySelectorAll('.menu a').forEach(a=>{
+        const url = new URL(a.getAttribute('href'), window.location.href);
+        url.searchParams.set('lang', l);
+        a.href = url.pathname + '?' + url.searchParams.toString();
+      });
     }
+
     swapLang(lang);
-    document.getElementById('lang-en').addEventListener('click', ()=>{ params.set('lang','en'); location.search = params.toString(); });
-    document.getElementById('lang-ar').addEventListener('click', ()=>{ params.set('lang','ar'); location.search = params.toString(); });
+
+    document.getElementById('lang-en').addEventListener('click', ()=>{
+      params.set('lang','en'); location.search = params.toString();
+    });
+    document.getElementById('lang-ar').addEventListener('click', ()=>{
+      params.set('lang','ar'); location.search = params.toString();
+    });
   })();
 </script>
+
 </body>
 </html>

@@ -106,7 +106,7 @@
           <li>Storytelling sessions and children’s activities</li>
           <li>Heritage fashion shows and competitions</li>
         </ul>
-        <p><em>The full schedule will be announced soon.</em></p>
+        <p><em>[E-Magazine [coming soon]</em></p>
 
         <!-- New Participants Section -->
         <h3 class="gold-grad">Participants</h3>
@@ -139,7 +139,7 @@
           <li>جلسات الحكايات الشعبية وأنشطة الأطفال</li>
           <li>عروض الأزياء التراثية والمسابقات</li>
         </ul>
-        <p><em>سيتم الإعلان عن الجدول الكامل قريبًا.</em></p>
+        <p><em>المجلة الإلكترونية [قريبًا].</em></p>
 
         <!-- Arabic Participants Section -->
         <h3 class="gold-grad">المشاركون</h3>
@@ -171,9 +171,16 @@
       document.getElementById('footer-placeholder').innerHTML = data;
       document.getElementById('year').textContent = new Date().getFullYear();
       applyFooterLanguageLinks(); // keep language consistent
+
+      // >>> Reapply current language to the newly loaded footer <<<
+      const params = new URLSearchParams(window.location.search);
+      const currentLang = params.get('lang') || 'en';
+      if (typeof swapLang === 'function') {
+        swapLang(currentLang);
+      }
     });
 
-  // Function to preserve current language
+  // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get('lang') || 'en';
@@ -184,6 +191,7 @@
     });
   }
 </script>
+
 
 
 <script>

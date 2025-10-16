@@ -140,9 +140,16 @@
       document.getElementById('footer-placeholder').innerHTML = data;
       document.getElementById('year').textContent = new Date().getFullYear();
       applyFooterLanguageLinks(); // keep language consistent
+
+      // >>> Reapply current language to the newly loaded footer <<<
+      const params = new URLSearchParams(window.location.search);
+      const currentLang = params.get('lang') || 'en';
+      if (typeof swapLang === 'function') {
+        swapLang(currentLang);
+      }
     });
 
-  // Function to preserve current language
+  // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get('lang') || 'en';
@@ -153,6 +160,7 @@
     });
   }
 </script>
+
 
 
 <script>

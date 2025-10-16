@@ -49,9 +49,6 @@
       <div>
         <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
         <h1 data-i18n-en="Expo971 – Heritage & Handicraft Events" data-i18n-ar="إكسبو 971 – فعالية التراث والحرف اليدوية">Expo971 – Heritage & Handicraft Events</h1>
-        <p class="sub-lead" data-i18n-en="Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre" data-i18n-ar="تحت رعاية مركز رواق عوشة بنت حسين الثقافي والاجتماعي.">
-          Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre
-        </p>
         <div class="badges">
           <span class="badge" data-i18n-en="Heritage" data-i18n-ar="التراث">Heritage</span>
           <span class="badge" data-i18n-en="Crafts" data-i18n-ar="الحرف">Crafts</span>
@@ -86,8 +83,6 @@
 <p>Together, these days form an immersive cultural journey — preserving traditions, celebrating diversity, and inspiring future generations with pride in national identity.</p>
 </div>
 <div data-i18n-ar-html style="display:none">
-   <h2 class="gold-grad">نظرة عامة على البرنامج</h2>
-
     <p>
       من <strong>1 إلى 7 ديسمبر 2025</strong>، سيُقام معرض <strong>إكسبو 971</strong> في رأس الخيمة على مدى أسبوع كامل من
       الفعاليات الثقافية والتراثية. يُخصَّص كل يوم لموضوع مميّز يبرز جانبًا من جوانب التراث الإماراتي والتقاليد وقيم المجتمع.
@@ -141,9 +136,16 @@
       document.getElementById('footer-placeholder').innerHTML = data;
       document.getElementById('year').textContent = new Date().getFullYear();
       applyFooterLanguageLinks(); // keep language consistent
+
+      // >>> Reapply current language to the newly loaded footer <<<
+      const params = new URLSearchParams(window.location.search);
+      const currentLang = params.get('lang') || 'en';
+      if (typeof swapLang === 'function') {
+        swapLang(currentLang);
+      }
     });
 
-  // Function to preserve current language
+  // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get('lang') || 'en';
@@ -154,6 +156,7 @@
     });
   }
 </script>
+
 
   <script>
     (function(){

@@ -50,9 +50,6 @@
       <div>
         <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
         <h1 data-i18n-en="Expo971 – Heritage & Handicraft Events" data-i18n-ar="إكسبو 971 – فعالية التراث والحرف اليدوية">Expo971 – Heritage & Handicraft Events</h1>
-        <p class="sub-lead" data-i18n-en="Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre" data-i18n-ar="تحت رعاية مركز رواق عوشة بنت حسين الثقافي والاجتماعي.">
-          Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre
-        </p>
         <div class="badges">
           <span class="badge" data-i18n-en="Heritage" data-i18n-ar="التراث">Heritage</span>
           <span class="badge" data-i18n-en="Crafts" data-i18n-ar="الحرف">Crafts</span>
@@ -92,11 +89,11 @@
 <p>من خلال ربط الحرفيين والمدارس والأسر والمؤسسات الثقافية، نسعى إلى تعزيز الفخر بالهوية وإلهام الإبداع والابتكار. وبالاعتماد على نجاح نسخة <strong>دبي 2024</strong> يواصل إكسبو 971 مهمته في تكريم الماضي وتمكين الحاضر وبناء مستقبل ثقافي مستدام.</p>
 <h3 class="gold-grad">فريقنا</h3>
 <ul>
-<li><strong>إدارة المشاريع والفعاليات:</strong> ناهد داوود المرّي وشهرزاد شويت</li>
-<li><strong>الإعلام والاتصال:</strong> عادل عنتبلي وأمل أحمد بن ثاني</li>
-<li><strong>فريق الدعم:</strong> موزة المسافري (مديرة مركز وزارة الثقافة في رأس الخيمة) وفريقها، إضافة إلى المنسقين والمتطوعين والمستشارين الثقافيين.</li>
+<li><strong>إدارة المشاريع والفعاليات:</strong> <p>ناهد داوود المرّي وشهرزاد شويت</p></li>
+<li><strong>الإعلام والاتصال:</strong><p>عادل عنتبلي وأمل أحمد بن ثاني</p> </li>
+<li><strong>فريق الدعم:</strong><p>موزة المسافري (مديرة مركز وزارة الثقافة في رأس الخيمة) وفريقها، إضافة إلى المنسقين والمتطوعين والمستشارين الثقافيين.</p> </li>
 </ul>
-<p>إن هذا المزيج من القيادة والإبداع والدعم المجتمعي يجعل إكسبو971 2025 متمكنا" حيث يجمع بين الخبرة والجهود الجماعية للاحتفاء بالتراث الإماراتي والحفاظ عليه واستدامته.</p>
+<p>إن هذا المزيج من القيادة والإبداع والدعم المجتمعي يجعل إكسبو971 2025 متمكناً</p> حيث يجمع بين الخبرة والجهود الجماعية للاحتفاء بالتراث الإماراتي والحفاظ عليه واستدامته.</p>
 </div>
       </div>
     </section>
@@ -112,9 +109,16 @@
       document.getElementById('footer-placeholder').innerHTML = data;
       document.getElementById('year').textContent = new Date().getFullYear();
       applyFooterLanguageLinks(); // keep language consistent
+
+      // >>> Reapply current language to the newly loaded footer <<<
+      const params = new URLSearchParams(window.location.search);
+      const currentLang = params.get('lang') || 'en';
+      if (typeof swapLang === 'function') {
+        swapLang(currentLang);
+      }
     });
 
-  // Function to preserve current language
+  // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get('lang') || 'en';
@@ -125,6 +129,7 @@
     });
   }
 </script>
+
 
   <script>
     (function(){

@@ -44,27 +44,66 @@
 </header>
 
 <main>
-  <section class="hero ornament-corner">
-    <div class="container hero-grid">
-      <div>
-        <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">United Arab Emirates</div>
-        <h1 data-i18n-en="Expo971 – Heritage & Handicraft Events" data-i18n-ar="إكسبو 971 – فعالية التراث والحرف اليدوية">Expo971 – Heritage & Handicraft Events</h1>
-        <p class="sub-lead" data-i18n-en="Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre" data-i18n-ar="تحت رعاية مركز رواق عوشة بنت حسين الثقافي والاجتماعي.">
-          Under the Patronage of Rewaq Ousha Bint Hussein Cultural & Social Centre
-        </p>
-        <div class="badges">
-          <span class="badge" data-i18n-en="Heritage" data-i18n-ar="التراث">Heritage</span>
-          <span class="badge" data-i18n-en="Crafts" data-i18n-ar="الحرف">Crafts</span>
-          <span class="badge" data-i18n-en="Culture" data-i18n-ar="الثقافة">Culture</span>
-        </div>
-        <div class="btn-row" style="margin-top:18px">
-          <a class="btn-grad" href="contact.html" data-i18n-en="Get Involved" data-i18n-ar="شارك معنا">Get Involved</a>
-          <a class="btn-grad" href="participants.html" data-i18n-en="Register as Participant" data-i18n-ar="تسجيل المشاركين">Register as Participant</a>
-        </div>
+<section class="hero ornament-corner">
+  <div class="container hero-grid">
+    <div>
+      <div class="kicker" data-i18n-en="United Arab Emirates" data-i18n-ar="الإمارات العربية المتحدة">
+        United Arab Emirates
       </div>
-      <div class="card ornament-corner"><img src="assets/Page5.png" class="responsive" alt="Expo971"></div>
+      <h1 data-i18n-en="Support Expo971 – Become a Sponsor" data-i18n-ar="ادعم إكسبو971 – كن راعياً للحدث">
+        Support Expo971 – Become a Sponsor
+      </h1>
+      <p class="sub-lead" data-i18n-en="Partner with us in celebrating heritage and innovation" data-i18n-ar="شاركنا في الاحتفاء بالتراث والابتكار">
+        Partner with us in celebrating heritage and innovation
+      </p>
+
+      <!-- Sponsor Forms (EN + AR) -->
+      <div data-i18n-en-html style="display:block">
+        <p>
+          <a href="https://docs.google.com/document/d/12wYW3oX4AWukUnz7t_KqSNjZ7-X3W4-w/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true"
+             class="btn-accent"
+             target="_blank"
+             rel="noopener">
+             Download Sponsor Form
+          </a>
+        </p>
+        <p>
+          <a href="bank-details.html"
+             class="btn-accent"
+             target="_blank"
+             rel="noopener">
+             View Bank Details
+          </a>
+        </p>
+      </div>
+
+      <div data-i18n-ar-html style="display:none">
+        <p>
+          <a href="https://docs.google.com/document/d/1ip-PEGXnOJeOw6COrrGPLX-FJIEYREcJ/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true"
+             class="btn-accent"
+             target="_blank"
+             rel="noopener">
+             تحميل نموذج الرعاة
+          </a>
+        </p>
+        <p>
+          <a href="bank-details.html"
+             class="btn-accent"
+             target="_blank"
+             rel="noopener">
+             عرض تفاصيل الحساب البنكي
+          </a>
+        </p>
+      </div>
+      <!-- End Sponsor Forms -->
     </div>
-  </section>
+
+    <div class="card ornament-corner">
+      <img src="assets/971_logo.png" class="responsive" alt="Expo971 Sponsors">
+    </div>
+  </div>
+</section>
+
 
   <section class="section ornament-corner">
     <div class="container">
@@ -198,50 +237,78 @@ Together, we can create a cultural legacy that resonates across generations.</p>
 
 <script>
 fetch('./partials/footer.html')
-  .then(r=>r.text())
-  .then(data=>{
-    document.getElementById('footer-placeholder').innerHTML=data;
-    document.getElementById('year').textContent=new Date().getFullYear();
+  .then(r => r.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+    document.getElementById('year').textContent = new Date().getFullYear();
     applyFooterLanguageLinks();
+
+    // Reapply language to newly loaded footer
+    const params = new URLSearchParams(window.location.search);
+    const currentLang = params.get('lang') || 'en';
+    swapLang(currentLang);
   });
 
-function applyFooterLanguageLinks(){
-  const params=new URLSearchParams(window.location.search);
-  const lang=params.get('lang')||'en';
-  document.querySelectorAll('.footer-menu a').forEach(a=>{
-    const url=new URL(a.getAttribute('href'),window.location.href);
-    url.searchParams.set('lang',lang);
-    a.href=url.pathname+'?'+url.searchParams.toString();
+function applyFooterLanguageLinks() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang') || 'en';
+  document.querySelectorAll('.footer-menu a').forEach(a => {
+    const url = new URL(a.getAttribute('href'), window.location.href);
+    url.searchParams.set('lang', lang);
+    a.href = url.pathname + '?' + url.searchParams.toString();
   });
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-  const params=new URLSearchParams(window.location.search);
-  const lang=params.get("lang")||"en";
-  document.querySelectorAll('[data-lang]').forEach(el=>{
-    el.style.display=el.dataset.lang===lang?"inline-block":"none";
-  });
-});
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  let lang = params.get('lang') || 'en';
 
-(function(){
-  const params=new URLSearchParams(window.location.search);
-  let lang=params.get('lang')||'en';
-  function swapLang(l){
-    document.documentElement.lang=l==='ar'?'ar':'en';
-    document.documentElement.dir=l==='ar'?'rtl':'ltr';
-    document.querySelectorAll('[data-i18n-en]').forEach(el=>{
-      const t=el.getAttribute(l==='ar'?'data-i18n-ar':'data-i18n-en');
-      if(t) el.textContent=t;
+  window.swapLang = function (l) {
+    document.documentElement.lang = l === 'ar' ? 'ar' : 'en';
+    document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+
+    // Update all text nodes
+    document.querySelectorAll('[data-i18n-en]').forEach(el => {
+      const t = el.getAttribute(l === 'ar' ? 'data-i18n-ar' : 'data-i18n-en');
+      if (t) el.textContent = t;
     });
-    const en=document.querySelectorAll('[data-i18n-en-html]');
-    const ar=document.querySelectorAll('[data-i18n-ar-html]');
-    en.forEach(b=>b.style.display=l==='ar'?'none':'block');
-    ar.forEach(b=>b.style.display=l==='ar'?'block':'none');
+
+    // Toggle HTML blocks
+    document.querySelectorAll('[data-i18n-en-html]').forEach(b => b.style.display = l === 'ar' ? 'none' : 'block');
+    document.querySelectorAll('[data-i18n-ar-html]').forEach(b => b.style.display = l === 'ar' ? 'block' : 'none');
+
+    // Update menu links with lang param
+    document.querySelectorAll('.menu a').forEach(a => {
+      const url = new URL(a.getAttribute('href'), window.location.href);
+      url.searchParams.set('lang', l);
+      a.href = url.pathname + '?' + url.searchParams.toString();
+    });
+
+    // Update "bank-details.html" links too
+    document.querySelectorAll('a[href*="bank-details.html"]').forEach(a => {
+      const url = new URL(a.getAttribute('href'), window.location.href);
+      url.searchParams.set('lang', l);
+      a.href = url.pathname + '?' + url.searchParams.toString();
+    });
+
+    // Update page title from h1
+    const h1 = document.querySelector('h1[data-i18n-en]');
+    if (h1) document.title = 'Expo971 • ' + h1.textContent;
   }
+
   swapLang(lang);
-  document.getElementById('lang-en').addEventListener('click',()=>{params.set('lang','en');location.search=params.toString();});
-  document.getElementById('lang-ar').addEventListener('click',()=>{params.set('lang','ar');location.search=params.toString();});
+
+  document.getElementById('lang-en').addEventListener('click', () => {
+    params.set('lang', 'en');
+    location.search = params.toString();
+  });
+
+  document.getElementById('lang-ar').addEventListener('click', () => {
+    params.set('lang', 'ar');
+    location.search = params.toString();
+  });
 })();
 </script>
+
 </body>
 </html>
