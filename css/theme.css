@@ -441,3 +441,16 @@ img.responsive {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0,119,182,0.35);
 }
+/* Remove white box behind the Expo971 middle logo */
+.partner-logo.expo {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.partner-logo.expo img {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 10px 28px rgba(0,119,182,0.4)); /* keep the nice blue glow */
+}
