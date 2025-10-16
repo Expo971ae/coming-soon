@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,7 +174,7 @@
 
       // >>> Reapply current language to the newly loaded footer <<<
       const params = new URLSearchParams(window.location.search);
-      const currentLang = params.get('lang') || 'en';
+      const currentLang = params.get('lang') || 'ar';
       if (typeof swapLang === 'function') {
         swapLang(currentLang);
       }
@@ -197,7 +197,8 @@
 <script>
 (function(){
   const params = new URLSearchParams(window.location.search);
-  let lang = params.get('lang') || 'en';
+  let lang = params.get('lang') || 'ar';
+  console.log(lang);
   function swapLang(l){
     document.documentElement.lang = l==='ar'?'ar':'en';
     document.documentElement.dir = l==='ar'?'rtl':'ltr';
