@@ -106,7 +106,12 @@
           <li>Storytelling sessions and children’s activities</li>
           <li>Heritage fashion shows and competitions</li>
         </ul>
-        <p><em>[E-Magazine [coming soon]</em></p>
+           <!-- Replaced E-Magazine link -->
+      <p>
+        <em>
+          Read our <a href="https://docs.google.com/presentation/d/1EY0fMA6R1GJjMVcHhyHS4DIobnZdy8LX/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true" class="accent-link" target="_blank">E-Magazine</a>
+        </em>
+      </p>
 
         <!-- New Participants Section -->
         <h3 class="gold-grad">Participants</h3>
@@ -139,7 +144,12 @@
           <li>جلسات الحكايات الشعبية وأنشطة الأطفال</li>
           <li>عروض الأزياء التراثية والمسابقات</li>
         </ul>
-        <p><em>المجلة الإلكترونية [قريبًا].</em></p>
+       <!-- Replaced Arabic E-Magazine link -->
+      <p>
+        <em>
+          تصفح <a href="https://docs.google.com/presentation/d/1MKnSh9gN4TOLHEZwV8qWyzpDyc3_9nMb/edit?usp=sharing&ouid=103205565244652459967&rtpof=true&sd=true" class="accent-link" target="_blank">المجلة الإلكترونية</a>
+        </em>
+      </p>
 
         <!-- Arabic Participants Section -->
         <h3 class="gold-grad">المشاركون</h3>
@@ -183,7 +193,7 @@
   // Function to preserve current language in footer links
   function applyFooterLanguageLinks() {
     const params = new URLSearchParams(window.location.search);
-    const lang = params.get('lang') || 'ar';
+    const lang = params.get('lang') || 'en';
     document.querySelectorAll('.footer-menu a').forEach(a => {
       const url = new URL(a.getAttribute('href'), window.location.href);
       url.searchParams.set('lang', lang);
